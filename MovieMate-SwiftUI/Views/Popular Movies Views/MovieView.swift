@@ -18,7 +18,7 @@ struct MovieView: View {
                 ProgressView()
             }
             .aspectRatio(contentMode: .fill)
-            .frame(width: 180, height: 240)
+            .frame(maxWidth: 120, maxHeight: 240)
             .cornerRadius(12)
     }
 }

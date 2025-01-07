@@ -10,15 +10,17 @@ import SwiftUI
 struct PopularMoviesView: View {
     
     @ObservedObject private var viewModel = PopularMoviesViewModel()
+    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible(), spacing: -16), GridItem(.flexible())]) {
-                ForEach($viewModel.movies) { movie in
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: columns, spacing: 8) {
+                ForEach(viewModel.movies) { movie in
                     MovieView(couverURL: movie.posterPathURL)
                 }
             }
         }
+        .padding(8)
         .onAppear{
             viewModel.loadingPopularMovies()
         }

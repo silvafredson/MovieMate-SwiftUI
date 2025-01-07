@@ -14,8 +14,8 @@ final class Service {
         self.api = api
     }
     
-    func getPopularMovies(page: Int, completion: @escaping (Result<[PopularMoviesModel], MoviesError>) -> Void) {
-        api.request(EndPoint(path: "/movie/popular?page=\(page)")) { (result: Result<PopularMoviesResponse, MoviesError>) in
+    func getPopularMovies(completion: @escaping (Result<[PopularMoviesModel], MoviesError>) -> Void) {
+        api.request(EndPoint(path: "/movie/popular")) { (result: Result<PopularMoviesResponse, MoviesError>) in
             switch result {
             case .success(let response):
                 completion(.success(response.results))
